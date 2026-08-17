@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="g1" x1="0" x2="1">
+      <stop offset="0" stop-color="#b0cfe6" />
+      <stop offset="1" stop-color="#516a78" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="#444" />
+  <!-- simulate a photo: ground -->
+  <rect x="0" y="520" width="1200" height="280" fill="#2f2f2f" />
+  <!-- wheel -->
+  <g transform="translate(180,420)">
+    <circle cx="120" cy="120" r="120" fill="#111" stroke="#6b6b6b" stroke-width="8" />
+    <circle cx="120" cy="120" r="60" fill="#ffffff" opacity="0.12" />
+  </g>
+  <!-- rainbow ribbon wires -->
+  <g stroke-linecap="round">
+    <path d="M340 220 C380 210, 460 260, 520 360" stroke="#FF4F4F" stroke-width="14" fill="none"/>
+    <path d="M340 235 C380 225, 460 275, 520 375" stroke="#FFB84F" stroke-width="14" fill="none"/>
+    <path d="M340 250 C380 240, 460 290, 520 390" stroke="#4FCCFF" stroke-width="14" fill="none"/>
+    <path d="M340 265 C380 255, 460 305, 520 405" stroke="#7CFF7C" stroke-width="14" fill="none"/>
+  </g>
+  <!-- PCB block -->
+  <g transform="translate(420,140)">
+    <rect x="0" y="0" width="380" height="200" rx="8" fill="#0f3b2e" />
+    <rect x="18" y="18" width="120" height="80" rx="6" fill="#0a6" opacity="0.15" />
+    <rect x="150" y="40" width="190" height="120" rx="6" fill="#1a2b3c" />
+  </g>
+  <!-- subtle vignette -->
+  <rect width="1200" height="800" fill="url(#g1)" opacity="0.08" />
+</svg>

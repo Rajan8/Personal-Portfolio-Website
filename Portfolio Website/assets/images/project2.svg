@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#0fb07a"/>
+  <defs>
+    <pattern id="dot" width="16" height="16" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#ffffff" opacity="0.06"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#dot)" />
+  <g transform="translate(540,300)" fill="#fff" opacity="0.06">
+    <rect x="-360" y="-200" width="720" height="400" rx="10"/>
+  </g>
+  <g transform="translate(560,340)" fill="#fff" opacity="0.12">
+    <rect x="-220" y="-120" width="440" height="240" rx="8"/>
+  </g>
+</svg>
