@@ -7,7 +7,397 @@
 <meta name="description" content="Portfolio of Rajan Lamichhane — mechanical engineering student, robotics builder, and co-founder of Dhruva Academy." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="icon" type="image/png" href="assets/images/favicon.png" />
+<link rel="apple-touch-icon" href="assets/images/favicon.png" />
+<style>
+/* ============================================================
+   Rajan Lamichhane — Portfolio
+   Design language: engineering datasheet / schematic
+   ============================================================ */
+
+:root {
+  --bg: #FAFAF8;
+  --bg-alt: #F1F7FB; /* slightly bluer alt */
+  --panel: #FFFFFF;
+  --ink: #0F1720; /* slightly darker navy-ish for contrast */
+  --ink-secondary: #405161;
+  --ink-muted: #7A8790;
+  --border: #E6EEF5; /* lighter, bluish border */
+  --border-strong: #C8DCE8;
+  --accent: #1E88FF; /* light blue accent */
+  --accent-bright: #4FC3FF;
+  --accent-tint: #E8F7FF;
+  --accent-ink: #073763;
+  --mono: 'Poppins', -apple-system, 'Segoe UI', sans-serif;
+  --sans: 'Poppins', -apple-system, 'Segoe UI', sans-serif;
+  --max: 1080px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+
+h1, h2, h3, h4 {
+  font-family: var(--mono);
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.lede { font-size: 19px; color: var(--ink-secondary); max-width: 62ch; }
+
+p { margin: 0 0 1em; }
+p:last-child { margin-bottom: 0; }
+
+/* nav */
+header.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(250, 250, 248, 0.88);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 18px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo { font-family: var(--mono); font-size: 15px; font-weight: 500; display: flex; align-items: center; gap: 8px; }
+.logo .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-bright); flex-shrink: 0; }
+nav.links { display: flex; gap: 28px; font-family: var(--mono); font-size: 13px; letter-spacing: 0.03em; }
+nav.links a { color: var(--ink-secondary); padding-bottom: 2px; border-bottom: 1px solid transparent; transition: color .15s, border-color .15s; }
+nav.links a:hover, nav.links a.active { color: var(--ink); border-bottom-color: var(--accent-bright); }
+
+/* buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 13px; letter-spacing: 0.02em;
+  padding: 12px 20px; border-radius: 4px;
+  border: 1px solid var(--border-strong); background: var(--panel); color: var(--ink);
+  cursor: pointer; transition: border-color .15s, background .15s, transform .1s;
+}
+.btn:hover { border-color: var(--accent); background: var(--accent-tint); transform: translateY(-1px); }
+.btn-primary { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.btn-primary:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* sections */
+section { padding: 88px 0; position: relative; scroll-margin-top: 76px; }
+section.alt { background: var(--bg-alt); }
+.section-head { margin-bottom: 48px; max-width: 62ch; }
+.section-head h2 { font-size: 26px; margin-top: 10px; }
+
+/* hero */
+.hero {
+  padding: 96px 0 72px;
+  position: relative;
+  background:
+    linear-gradient(to right, rgba(30, 136, 255, 0.05), rgba(79, 195, 255, 0.03)),
+    linear-gradient(to bottom, rgba(15, 23, 32, 0.015), rgba(15, 23, 32, 0.01));
+  background-image:
+    linear-gradient(rgba(30, 136, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30, 136, 255, 0.08) 1px, transparent 1px),
+    radial-gradient(circle at top left, rgba(79, 195, 255, 0.12), transparent 35%);
+  background-size: 28px 28px, 28px 28px, 100% 100%;
+  background-position: center center, center center, center;
+  border-bottom: 1px solid var(--border);
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 26px 32px 16px;
+  border: 1px solid rgba(66, 107, 141, 0.18);
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.32), rgba(255,255,255,0.08));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.8),
+    inset 0 -10px 18px rgba(15, 23, 32, 0.02),
+    0 18px 40px rgba(15, 23, 32, 0.03);
+  pointer-events: none;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 18px 20px 8px;
+  border: 1px solid rgba(72, 128, 169, 0.12);
+  border-radius: 20px;
+  pointer-events: none;
+}
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+.hero-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: start; }
+.hero h1 { font-size: clamp(34px, 5vw, 52px); margin: 14px 0 20px; }
+.hero h1 .amp { color: var(--accent); }
+
+.typewriter-line {
+  font-family: var(--mono);
+  font-size: 15px;
+  margin: 4px 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.typewriter-prefix { color: var(--ink-muted); letter-spacing: 0.02em; }
+.typewriter-word { color: var(--accent-ink); font-weight: 600; }
+.typewriter-cursor { color: var(--accent); animation: blink 0.9s step-end infinite; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .typewriter-cursor { animation: none; }
+}
+
+.readout {
+  border: 1px solid var(--border-strong); border-radius: 6px; background: var(--panel);
+  padding: 20px 22px; font-family: var(--mono); font-size: 13px;
+}
+.readout .row { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px dashed var(--border); }
+.readout .row:last-child { border-bottom: none; }
+.readout .row span:first-child { color: var(--ink-muted); }
+.readout .row span:last-child { color: var(--ink); text-align: right; }
+.readout .row .ok { color: var(--accent); }
+
+.photo-frame {
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--bg-alt);
+  aspect-ratio: 1 / 1;
+  width: min(320px, 100%);
+  margin: 8px auto 0;
+  box-shadow: 0 0 0 8px var(--bg);
+}
+.photo-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
+
+.about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: start; }
+
+/* project cards */
+.card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+.spec-card {
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  background: var(--panel);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color .15s, transform .15s;
+}
+.spec-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+/* media area (image) */
+.spec-media {
+  width: 100%;
+  height: 320px;
+  display: block;
+  background: var(--bg-alt);
+  overflow: hidden;
+  position: relative;
+}
+.spec-media img, .spec-media svg { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 0; box-shadow: 0 12px 30px rgba(7,18,32,0.06); }
+.media-overlay { position: absolute; inset: 0; display:flex; align-items:center; justify-content:center; background: linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.18)); opacity: 0; transition: opacity .18s ease; }
+.spec-media:hover .media-overlay { opacity: 1; }
+.media-overlay .cta { background: rgba(255,255,255,0.95); padding: 8px 12px; border-radius: 999px; color: var(--accent); font-weight: 600; box-shadow: 0 6px 18px rgba(7,18,32,0.06); }
+
+.pec-content_fix {}
+.spec-content { display: flex; flex-direction: column; padding: 28px 24px; gap: 14px; }
+.spec-head {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; color: var(--ink-muted); text-transform: uppercase;
+  /* make ribbon flush with the card border by slightly over-extending
+     beyond the inner padding so it sits under the card border-radius */
+  margin: 0 -1px 12px; padding: 10px 24px; border-radius: 8px 8px 0 0;
+  background: var(--accent-tint);
+  color: var(--accent-ink);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  left: -1px;
+  width: calc(100% + 2px);
+}
+.spec-head .status { color: var(--accent-ink); font-weight: 600; }
+
+/* Support older card markup where .spec-head and .spec-body are direct children
+   of .spec-card (Selected builds section). Add inner padding so text doesn't
+   touch the card edges and keep the ribbon look consistent. */
+.spec-card > .spec-head {
+  margin: 0 -1px 12px; padding: 10px 24px; border-radius: 8px 8px 0 0;
+  background: var(--accent-tint); color: var(--accent-ink); border-bottom: 1px solid var(--border);
+  position: relative; left: -1px; width: calc(100% + 2px);
+}
+.spec-card > .spec-body {
+  padding: 18px 24px 24px;
+  gap: 16px;
+}
+.spec-body { padding-top: 16px; flex: 1; display: flex; flex-direction: column; gap: 16px; }
+.spec-body h3 { font-size: 18px; }
+.spec-body .desc { color: var(--ink-secondary); font-size: 14.5px; }
+.tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 4px; }
+.tag { font-family: var(--mono); font-size: 11px; padding: 6px 10px; border-radius: 6px; background: var(--panel); color: var(--ink); border: 1px solid var(--border-strong); }
+.result-line { font-family: var(--mono); font-size: 12.5px; color: var(--ink); border-top: 1px dashed var(--border); padding-top: 10px; display: flex; gap: 8px; }
+.result-line::before { content: "›"; color: var(--accent); }
+
+/* achievements */
+.eyebrow-row { display: flex; align-items: center; gap: 10px; }
+.eyebrow-dash { display: inline-block; width: 22px; height: 1px; background: var(--accent); }
+
+.stat-strip { display: flex; flex-wrap: wrap; gap: 0; margin: 40px 0 56px; }
+.stat { flex: 1 1 160px; padding: 4px 0 4px 24px; margin-left: 24px; border-left: 2px solid var(--accent); }
+.stat:first-child { margin-left: 0; padding-left: 20px; }
+.stat-num { display: block; font-family: var(--mono); font-weight: 600; font-size: 34px; color: var(--ink); line-height: 1; }
+.stat-label { display: block; margin-top: 8px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
+
+.achieve-timeline { position: relative; max-width: 640px; }
+.achieve-item { position: relative; padding: 0 0 34px 32px; border-left: 1px solid var(--border-strong); }
+.achieve-item:last-child { border-left-color: transparent; padding-bottom: 0; }
+.achieve-dot {
+  position: absolute; left: -7px; top: 2px;
+  width: 13px; height: 13px; border-radius: 50%;
+  background: var(--panel); border: 2px solid var(--accent);
+}
+.achieve-date { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 6px; }
+.achieve-item h4 { font-size: 16.5px; margin-bottom: 6px; }
+.achieve-item p { color: var(--ink-secondary); font-size: 14.5px; max-width: 56ch; }
+
+@media (max-width: 760px) {
+  .stat-strip { gap: 24px 0; }
+  .stat { flex: 1 1 45%; padding: 4px 16px; }
+}
+
+/* timeline */
+.timeline { display: flex; flex-direction: column; }
+.tl-item { display: grid; grid-template-columns: 140px 1fr; gap: 24px; padding: 22px 0; border-bottom: 1px solid var(--border); }
+.tl-item:last-child { border-bottom: none; }
+.tl-date { font-family: var(--mono); font-size: 12.5px; color: var(--ink-muted); padding-top: 3px; }
+.tl-body h4 { font-size: 16px; margin-bottom: 6px; }
+.tl-body p { color: var(--ink-secondary); font-size: 14.5px; }
+
+/* skills */
+.skill-block { border: 1px solid var(--border); border-radius: 6px; padding: 20px 22px; background: var(--panel); }
+.skill-block h4 { font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 12px; }
+.skill-chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { border: 1px solid var(--border-strong); border-radius: 4px; padding: 6px 12px; font-family: var(--mono); font-size: 12.5px; }
+.skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+/* contact */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.contact-list { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+.contact-row { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px; border-bottom: 1px solid var(--border); background: var(--panel); transition: background .15s; }
+.contact-row:last-child { border-bottom: none; }
+.contact-row:hover { background: var(--accent-tint); }
+.contact-row .label { font-family: var(--mono); font-size: 11px; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.contact-row .value { font-size: 15px; }
+
+form.contact-form { display: flex; flex-direction: column; gap: 16px; }
+.field label { display: block; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); margin-bottom: 6px; }
+.field input, .field textarea {
+  width: 100%; border: 1px solid var(--border-strong); border-radius: 4px; background: var(--panel);
+  padding: 12px 14px; font-family: var(--sans); font-size: 14.5px; color: var(--ink);
+}
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-tint); }
+.field textarea { resize: vertical; min-height: 120px; }
+
+footer { border-top: 1px solid var(--border); padding: 56px 0 28px; font-size: 13.5px; color: var(--ink-muted); position: relative; overflow: hidden; }
+
+.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; position: relative; z-index: 1; }
+.footer-col { display: flex; flex-direction: column; gap: 12px; }
+.footer-col a { color: var(--ink-secondary); transition: color .15s; }
+.footer-col a:hover { color: var(--accent); }
+.footer-tagline { color: var(--ink-muted); font-size: 13.5px; max-width: 32ch; margin-top: 4px; }
+.footer-heading { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 4px; }
+.footer-static { color: var(--ink-secondary); }
+
+.footer-bottom {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--border);
+  font-family: var(--mono); font-size: 12px; color: var(--ink-muted); position: relative; z-index: 1;
+}
+
+@media (max-width: 760px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+
+@media (max-width: 760px) {
+  .hero-grid, .contact-grid, .about-grid { grid-template-columns: 1fr; }
+  .photo-frame { max-width: 320px; }
+  .card-grid { grid-template-columns: 1fr; }
+  .skills-grid { grid-template-columns: 1fr; }
+  nav.links { gap: 16px; }
+  .nav-inner { padding: 16px 20px; }
+  section { padding: 56px 0; }
+  .tl-item { grid-template-columns: 1fr; gap: 6px; }
+  footer .wrap { flex-direction: column; gap: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .spec-card, .btn { transition: none; }
+}
+
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px;
+}
+
+/* Helper classes for previously-inline styles */
+.btn-row--spaced { margin-top: 28px; }
+.about-title { font-size: clamp(30px,4vw,42px); margin-top: 12px; max-width: 20ch; }
+.lede--spaced { margin-top: 18px; }
+.projects-title { font-size: clamp(30px,4vw,42px); margin-top: 12px; max-width: 22ch; }
+.card-grid--spaced { margin-top: 44px; }
+.contact-title { font-size: clamp(30px,4vw,42px); margin-top: 12px; max-width: 20ch; }
+.contact-grid--spaced { margin-top: 48px; }
+.btn-start { align-self: flex-start; }
+.footer-wrap { display: flex; justify-content: space-between; }
+#formError { display: none; color: #A32D2D; font-size: 13px; font-family: var(--mono); }
+
+/* Decorative gears */
+.gear {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  opacity: 0.08;
+  fill: var(--accent-bright);
+  stroke: var(--accent);
+  stroke-width: 0.5;
+  pointer-events: none;
+  transform-origin: center;
+}
+.gear-1 { top: 8px; right: 6%; transform: rotate(-12deg) scale(1.1); }
+.gear-2 { bottom: -18px; left: 6%; transform: rotate(18deg) scale(0.9); }
+
+@media (max-width: 760px) {
+  .gear { width: 96px; height: 96px; opacity: 0.06; }
+  .gear-1 { right: 4%; top: 4px; }
+  .gear-2 { left: 4%; bottom: -8px; }
+  .spec-content { padding: 20px 18px; }
+  .spec-head { margin-left: -1px; margin-right: -1px; padding-left: 18px; padding-right: 18px; left: -1px; width: calc(100% + 2px); }
+}
+
+</style>
 </head>
 <body>
 
@@ -17,6 +407,7 @@
     <nav class="links">
       <a href="#top">Home</a>
       <a href="#about">About</a>
+      <a href="#achievements">Achievements</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -48,6 +439,7 @@
     <div>
       <p class="eyebrow">Robotics | Mechatronics — Pokhara, Nepal</p>
       <h1>I build machines,<br>then teach kids to<br>build their own<span class="amp">.</span></h1>
+      <p class="typewriter-line"><span class="typewriter-prefix">Working with —</span> <span id="typewriter" class="typewriter-word"></span><span class="typewriter-cursor">|</span></p>
       <p class="lede">Mechanical engineering student focused on robotics and mechatronics — designing hardware, wiring the electronics, and writing the code that makes it move. Co-founder of a robotics program that puts the same tools in the hands of school students.</p>
       <div class="btn-row btn-row--spaced">
         <a class="btn btn-primary" href="#projects">View projects</a>
@@ -168,6 +560,55 @@
           <h4>E-waste training — GCRU initiative, UNDP</h4>
           <p>Trainer for handling and reusing electronic waste as part of the UNDP-backed GCRU initiative.</p>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="achievements">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow eyebrow-row"><span class="eyebrow-dash"></span>Achievements</p>
+      <h2>Recognition &amp; milestones</h2>
+    </div>
+
+    <div class="stat-strip">
+      <div class="stat"><span class="stat-num">6</span><span class="stat-label">Projects built</span></div>
+      <div class="stat"><span class="stat-num">3</span><span class="stat-label">First-place wins</span></div>
+      <div class="stat"><span class="stat-num">2</span><span class="stat-label">Techfest selections</span></div>
+      <div class="stat"><span class="stat-num">4</span><span class="stat-label">Programs taught</span></div>
+    </div>
+
+    <div class="achieve-timeline">
+      <div class="achieve-item">
+        <span class="achieve-dot"></span>
+        <div class="achieve-date">Oct – Dec 2024</div>
+        <h4>1st place, endurance — Mechtrix</h4>
+        <p>RC airplane, built and flight-tested with a team; also passed selection in the Aeromodelling competition at Techfest.</p>
+      </div>
+      <div class="achieve-item">
+        <span class="achieve-dot"></span>
+        <div class="achieve-date">Mar 2024 – Feb 2025</div>
+        <h4>1st place — autonomous boat racing</h4>
+        <p>Mentored the Robotics Club team that won first place in the autonomous boat racing competition.</p>
+      </div>
+      <div class="achieve-item">
+        <span class="achieve-dot"></span>
+        <div class="achieve-date">2024</div>
+        <h4>Selected — Techfest, IIT Bombay</h4>
+        <p>Smart safety helmet project selected to compete, combining IoT health/location tracking with ML-based accident prediction.</p>
+      </div>
+      <div class="achieve-item">
+        <span class="achieve-dot"></span>
+        <div class="achieve-date">First semester, 2023</div>
+        <h4>1st place — line following bot</h4>
+        <p>Won first position with an autonomous line-following bot in my very first semester of college.</p>
+      </div>
+      <div class="achieve-item">
+        <span class="achieve-dot"></span>
+        <div class="achieve-date">Ongoing</div>
+        <h4>Data analytics certifications — Coursera</h4>
+        <p>Multiple certificates covering SQL and data analytics tools.</p>
       </div>
     </div>
   </div>
@@ -380,7 +821,7 @@
 </section>
 
 <footer>
-  <div class="wrap footer-wrap">
+  <div class="wrap">
     <!-- decorative gear -->
     <svg class="gear gear-2" viewBox="0 0 100 100" aria-hidden="true">
       <g>
@@ -396,8 +837,35 @@
         <circle cx="50" cy="50" r="10" fill="var(--accent)"/>
       </g>
     </svg>
-    <span>© 2026 Rajan Lamichhane</span>
-    <span>Pokhara, Nepal</span>
+
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a class="logo" href="#top"><span class="dot"></span>Rajan Lamichhane</a>
+        <p class="footer-tagline">Robotics &amp; mechatronics engineer, building hardware and teaching it forward from Pokhara, Nepal.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Site</h4>
+        <a href="#top">Home</a>
+        <a href="#about">About</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Contact</h4>
+        <a href="mailto:rajanlami8@gmail.com">rajanlami8@gmail.com</a>
+        <a href="tel:+9779814111921">+977 981-411-1921</a>
+        <a href="https://linkedin.com/in/rajan0/" target="_blank" rel="noopener">linkedin.com/in/rajan0</a>
+        <span class="footer-static">Pokhara, Nepal</span>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Rajan Lamichhane</span>
+      <span>Built with Fusion 360 energy, not much sleep.</span>
+    </div>
   </div>
 </footer>
 
@@ -427,6 +895,42 @@ document.addEventListener('click', function (e) {
   const target = document.querySelector(link.getAttribute('href'));
   if (!target) return;
 });
+
+(function () {
+  const el = document.getElementById('typewriter');
+  if (!el) return;
+  const words = ['Robotics', 'Mechatronics', 'Machine Learning', 'Arduino', 'Python', 'Fusion 360', 'Electronics', 'C'];
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) { el.textContent = words[0]; return; }
+
+  let wordIndex = 0, charIndex = 0, deleting = false;
+  const typeSpeed = 90, deleteSpeed = 45, holdTime = 1300, gapTime = 300;
+
+  function tick() {
+    const word = words[wordIndex];
+    if (!deleting) {
+      charIndex++;
+      el.textContent = word.slice(0, charIndex);
+      if (charIndex === word.length) {
+        deleting = true;
+        setTimeout(tick, holdTime);
+        return;
+      }
+      setTimeout(tick, typeSpeed);
+    } else {
+      charIndex--;
+      el.textContent = word.slice(0, charIndex);
+      if (charIndex === 0) {
+        deleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        setTimeout(tick, gapTime);
+        return;
+      }
+      setTimeout(tick, deleteSpeed);
+    }
+  }
+  tick();
+})();
 </script>
 
 </body>
