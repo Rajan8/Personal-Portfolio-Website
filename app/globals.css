@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Rajan Lamichhane — Portfolio
+   Design language: engineering datasheet / blueprint schematic
+   Carried forward from v1, rebuilt with a full dark theme,
+   semantic tokens, and an accessible type scale.
+   ============================================================ */
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-alt: var(--bg-alt);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-tint: var(--accent-tint);
+  --color-accent-ink: var(--accent-ink);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
+
+  --font-display: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SF Mono", monospace;
+
+  --radius-card: 12px;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root {
+  color-scheme: light;
+
+  --bg: #fafaf8;
+  --bg-alt: #f1f6fb;
+  --surface: #ffffff;
+  --surface-2: #f7fafd;
+
+  --ink: #0f1720;
+  --ink-2: #3d4d5c;
+  --ink-3: #6b7b88;
+
+  --line: #e3ebf3;
+  --line-strong: #c9dbe8;
+
+  --accent: #0f6fd4;        /* darkened from v1 #1E88FF → 4.6:1 on white */
+  --accent-hover: #0b579f;
+  --accent-tint: #e8f3ff;
+  --accent-ink: #073763;
+
+  --danger: #b3261e;
+  --success: #1f7a4d;
+
+  /* blueprint grid */
+  --grid-line: rgba(15, 111, 212, 0.07);
+  --grid-glow: rgba(79, 179, 255, 0.14);
+}
+
+.dark {
+  color-scheme: dark;
+
+  --bg: #0a1017;
+  --bg-alt: #0e161f;
+  --surface: #121b26;
+  --surface-2: #17222f;
+
+  --ink: #eaf1f8;
+  --ink-2: #a9bccd;
+  --ink-3: #7d92a5;
+
+  --line: #22303f;
+  --line-strong: #33465a;
+
+  --accent: #58b6ff;        /* lightened → 7.1:1 on --bg */
+  --accent-hover: #8ccdff;
+  --accent-tint: rgba(88, 182, 255, 0.12);
+  --accent-ink: #b8dcff;
+
+  --danger: #ff9b93;
+  --success: #6cd9a2;
+
+  --grid-line: rgba(88, 182, 255, 0.06);
+  --grid-glow: rgba(88, 182, 255, 0.09);
+}
+
+* {
+  border-color: var(--line);
+}
+
+html {
+  scroll-behavior: smooth;
+  /* clears the sticky header when jumping to an anchor */
+  scroll-padding-top: 84px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Focus: always visible, never removed. */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Native controls follow the theme */
+input,
+textarea {
+  color-scheme: inherit;
+}
+
+/* ---------- utilities ---------- */
+
+.blueprint-grid {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: center center;
+}
+
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Tabular figures so stat/spec columns don't jitter */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+.dashed-rule {
+  border-bottom: 1px dashed var(--line);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
